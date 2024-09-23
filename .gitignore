@@ -23,3 +23,7 @@ media/
 # MacOS and Linux system files
 .DS_Store
 *.swp
+
+
+# personal thoughts
+thoughts*.txt
