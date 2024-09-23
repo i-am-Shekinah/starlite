@@ -27,3 +27,7 @@ media/
 
 # All text files starting with thoughts
 thoughts*.txt
+
+
+# other utilites
+create_apps.py
