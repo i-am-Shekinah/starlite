@@ -25,5 +25,5 @@ media/
 *.swp
 
 
-# personal thoughts
-*thoughts.txt
+# All text files starting with thoughts
+thoughts*.txt
