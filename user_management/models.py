@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 from cart.models import Cart
 from product_management.models import Product
 
@@ -8,6 +8,21 @@ class User(AbstractUser):
         ('buyer', 'Buyer'),
         ('seller', 'Seller'),
     )
+
+    # handles conflict with django.auth.User.groups
+    groups = models.ManyToManyField(
+        Group,
+        related_name='custom_user_groups',
+        blank=True,
+    )
+    
+    # handles conflict with django.auth.User.user_permissions 
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='custom_user_permissions',
+        blank=True,
+    )
+
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     role = models.CharField(max_length=6, choices=ROLE_CHOICES)
@@ -17,7 +32,7 @@ class User(AbstractUser):
     
 
 class Buyer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
     # wishlist = 
 
@@ -26,7 +41,7 @@ class Buyer(models.Model):
     
 
 class Seller(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     store_name = models.CharField(max_length=255)
     products = models.ManyToManyField(Product, blank=True)
 
