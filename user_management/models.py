@@ -33,7 +33,8 @@ class User(AbstractUser):
 
 class Buyer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    shipping_address = models.ForeignKey('shipping_and_delivery_management.ShippingAddress', on_delete=models.CASCADE, related_name='buyer')
+    
     # wishlist = 
 
     def __str__(self):
@@ -43,6 +44,7 @@ class Buyer(models.Model):
 class Seller(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     store_name = models.CharField(max_length=255)
+    store_description = models.TextField(blank=True, null=True)
     products = models.ManyToManyField(Product, blank=True)
 
     def __str__(self):

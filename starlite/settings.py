@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cart',
     'order',
     'product_management',
+    'shipping_and_delivery_management',
     'user_management'
 ]
 
