@@ -17,7 +17,7 @@ class PaymentMethod(models.Model):
         ('credit_card', 'Credit Card'),
         ('bank_transfer', 'Bank Transfer'),
     )
-    buyer = models.ForeignKey('user_management.Buyer', on_delete=models.CASCADE, related_name='payment_methods')
+    buyer = models.ForeignKey('user_management.Buyer', on_delete=models.CASCADE, related_name='all_payment_methods')
     payment_type = models.CharField(max_length=50, choices=PAYMENT_CHOICES)
     provider_name = models.CharField(max_length=100)
     account_number = models.CharField(max_length=50)

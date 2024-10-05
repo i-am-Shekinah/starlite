@@ -120,6 +120,9 @@ Contributions are welcome! Please follow the steps below to contribute:
 5. Push to your branch (`git push origin feature-branch`)
 6. Open a Pull Request
 
+The ER-D of this project can be found on [draw.io](https://app.diagrams.net/?src=about#G1rp_KeepYkMad-PPlzIRoDdNVwwYQw7Eb#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D). Feel free to take a look, and share your thoughts.
+
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file more details.
 

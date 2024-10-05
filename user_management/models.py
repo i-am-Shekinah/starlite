@@ -24,6 +24,7 @@ class User(AbstractUser):
     )
 
     email = models.EmailField(unique=True)
+    profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     role = models.CharField(max_length=6, choices=ROLE_CHOICES)
 
@@ -34,7 +35,8 @@ class User(AbstractUser):
 class Buyer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     shipping_address = models.ForeignKey('shipping_and_delivery_management.ShippingAddress', on_delete=models.CASCADE, related_name='buyer')
-    
+    payment_methods = models.JSONField(blank=True, null=True)
+
     # wishlist = 
 
     def __str__(self):
